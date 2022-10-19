@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: zuul-proxy
+  cloud:
+    gateway:
+      routes:
+        - id: countriesModule
+          uri: lb://COUNTRIES-SERVICE
+          predicates:
+            - Path=/countries-management/**
+server:
+  port: 80
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
