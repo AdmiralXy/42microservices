@@ -12,6 +12,10 @@ spring:
           uri: lb://COVID-SERVICE
           predicates:
             - Path=/covid-management/**
+        - id: aggregatorModule
+          uri: lb://AGGREGATOR-SERVICE
+          predicates:
+            - Path=/information-management/**
 server:
   port: 80
 eureka:
