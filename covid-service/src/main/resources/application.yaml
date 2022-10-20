@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: covid-service
+    third-party-api: https://covid2019-api.herokuapp.com/v2/country/
+server:
+  port: 0
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
