@@ -1,4 +1,4 @@
-package com.admiralxy.countries;
+package com.admiralxy.country;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -12,13 +12,13 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 @SpringBootApplication
-public class CountriesApplication {
+public class CountryApplication {
 
     @Value("${spring.application.third-party-api}")
     private String thirdPartyApi;
 
     public static void main(String[] args) {
-        SpringApplication.run(CountriesApplication.class, args);
+        SpringApplication.run(CountryApplication.class, args);
     }
 
     @GetMapping("/countries-management/countries/{country-name}")

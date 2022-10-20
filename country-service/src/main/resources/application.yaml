@@ -1,6 +1,6 @@
 spring:
   application:
-    name: countries-service
+    name: country-service
     third-party-api: https://restcountries.com/v3.1/name/
 server:
   port: 0

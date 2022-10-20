@@ -9,10 +9,10 @@
         <relativePath/>
     </parent>
     <groupId>com.admiralxy</groupId>
-    <artifactId>countries-service</artifactId>
+    <artifactId>country-service</artifactId>
     <version>1.0.0-RELEASE</version>
-    <name>countries-service</name>
-    <description>countries-service</description>
+    <name>country-service</name>
+    <description>country-service</description>
     <properties>
         <java.version>1.8</java.version>
         <spring-cloud.version>2021.0.4</spring-cloud.version>
