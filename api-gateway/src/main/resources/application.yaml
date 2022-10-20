@@ -4,10 +4,14 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: countriesModule
+        - id: countryModule
           uri: lb://COUNTRIES-SERVICE
           predicates:
             - Path=/countries-management/**
+        - id: covidModule
+          uri: lb://COVID-SERVICE
+          predicates:
+            - Path=/covid-management/**
 server:
   port: 80
 eureka:
