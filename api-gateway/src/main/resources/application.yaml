@@ -5,7 +5,7 @@ spring:
     gateway:
       routes:
         - id: countryModule
-          uri: lb://COUNTRIES-SERVICE
+          uri: lb://COUNTRY-SERVICE
           predicates:
             - Path=/countries-management/**
         - id: covidModule
