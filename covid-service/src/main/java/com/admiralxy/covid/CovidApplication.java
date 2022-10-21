@@ -22,7 +22,7 @@ public class CovidApplication {
     }
 
     @GetMapping("/covid-management/countries/{country-name}")
-    public ResponseEntity<?> getByCountry(@PathVariable("country-name") String countryName) {
+    public ResponseEntity<String> getByCountry(@PathVariable("country-name") String countryName) {
         RestTemplate restTemplate = new RestTemplate();
         try {
             return restTemplate.getForEntity(thirdPartyApi + countryName, String.class);
