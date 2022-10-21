@@ -5,10 +5,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name = "covid-service")
-public interface CovidClient {
+@FeignClient(name = "country-service")
+public interface CountryClient {
 
-    @GetMapping("/covid-management/countries/{country-name}")
+    @GetMapping("/countries-management/countries/{country-name}")
     ResponseEntity<String> getByCountry(@PathVariable("country-name") String countryName);
 
 }

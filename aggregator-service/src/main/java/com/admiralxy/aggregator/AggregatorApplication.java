@@ -1,7 +1,11 @@
 package com.admiralxy.aggregator;
 
-import com.admiralxy.aggregator.clients.AggregatorClient;
+import com.admiralxy.aggregator.clients.CountryClient;
 import com.admiralxy.aggregator.clients.CovidClient;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,31 +14,45 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestClientException;
 
 @RestController
 @EnableFeignClients
 @SpringBootApplication
-public class AggregatorApplication implements AggregatorClient {
+public class AggregatorApplication {
 
     private final CovidClient covidClient;
 
-    @Autowired
-    public AggregatorApplication(CovidClient covidClient) {
-        this.covidClient = covidClient;
-    }
+    private final CountryClient countryClient;
 
-    @GetMapping("/information-management/countries/{country-name}")
-    @Override
-    public ResponseEntity<?> getByCountry(@PathVariable("country-name") String countryName) {
-        try {
-            return covidClient.getByCountry(countryName);
-        } catch (RestClientException exception) {
-            return ResponseEntity.badRequest().build();
-        }
+    @Autowired
+    public AggregatorApplication(CovidClient covidClient, CountryClient countryClient) {
+        this.covidClient = covidClient;
+        this.countryClient = countryClient;
     }
 
     public static void main(String[] args) {
         SpringApplication.run(AggregatorApplication.class, args);
+    }
+
+    @GetMapping("/information-management/countries/{country-name}")
+    public ResponseEntity<String> getByCountry(@PathVariable("country-name") String countryName) {
+        try {
+
+            ObjectMapper mapper = new ObjectMapper();
+
+            String covid = covidClient.getByCountry(countryName).getBody();
+            String country = countryClient.getByCountry(countryName).getBody();
+
+            ObjectNode covidNode = (ObjectNode) mapper.readTree(covid);
+            ArrayNode countryNode = (ArrayNode) mapper.readTree(country);
+
+            JsonNode complexNode = mapper.readTree("{\"covid\": " + covidNode + ", \"country\": " + countryNode + "}");
+
+            return ResponseEntity.ok(complexNode.toString());
+
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
+            return ResponseEntity.badRequest().build();
+        }
     }
 }
