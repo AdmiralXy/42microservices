@@ -51,7 +51,6 @@ public class AggregatorApplication {
             return ResponseEntity.ok(complexNode.toString());
 
         } catch (Exception exception) {
-            System.out.println(exception.getMessage());
             return ResponseEntity.badRequest().build();
         }
     }
