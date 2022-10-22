@@ -21,13 +21,13 @@ Microservices for data aggregation about covid-19 and countries, based on Spring
 
 ## :ledger:  Services
 
-| Service            | Endpoint                                          | Description                                          |
-|--------------------|---------------------------------------------------|------------------------------------------------------|
-| Eureka Server      | localhost:8761                                    | Service discovery                                    |
-| API Gateway        | localhost:80                                      | Single entry point for all services                  |
-| Country Service    | /countries-management/countries/{country-name}    | Provides information about countries                 |
-| Covid Service      | /covid-management/countries/{country-name}        | Provides information about covid-19                  |
-| Aggregator Service | /information-management/countries/{country-name}  | Aggregates data from `Country` and `Covid` services  |
+| Service            | Endpoint                                          | Description                                                                                     |
+|--------------------|---------------------------------------------------|-------------------------------------------------------------------------------------------------|
+| Eureka Server      | localhost:8761                                    | Service discovery                                                                               |
+| API Gateway        | localhost:80                                      | Single entry point for all services                                                             |
+| Country Service    | /countries-management/countries/{country-name}    | Provides information about countries, uses [RestCountries](https://restcountries.com/)          |
+| Covid Service      | /covid-management/countries/{country-name}        | Provides information about covid-19, uses [covidAPI](https://github.com/javieraviles/covidAPI)  |
+| Aggregator Service | /information-management/countries/{country-name}  | Aggregates data from `Country` and `Covid` services                                             |
 
 ## :rocket:  Example
 
