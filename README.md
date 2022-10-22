@@ -1,6 +1,6 @@
 <h1 align="center">MicroServices</h1>
 <p align="center">
-Microservices architecture based on Spring Cloud and Netflix Eureka for data aggregation about covid-19 and countries.
+Microservices for data aggregation about covid-19 and countries, based on Spring Cloud and Netflix Eureka
 </p>
 
 <p align="center">
@@ -42,8 +42,6 @@ Response:
 
 Make sure you have JDK 1.8+ and Maven installed
 
-**Maven endpoints:**
-
 ```bash
 -- Compile, build and run each application in each module
 $> cd eureka-server && mvn spring-boot:run
@@ -53,7 +51,7 @@ $> cd aggregator-service && mvn spring-boot:run
 $> cd gateway-service && mvn spring-boot:run
 ```
 
-## :zap:  Quick start (Docker)
+## :whale:  Quick start (Docker)
 
 Make sure you have Docker and Docker Compose installed
 
