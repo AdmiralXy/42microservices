@@ -1,6 +1,6 @@
 spring:
   application:
-    name: zuul-proxy
+    name: api-gateway
   cloud:
     gateway:
       routes:
