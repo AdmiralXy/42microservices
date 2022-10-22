@@ -1,9 +1,10 @@
 FROM openjdk:8-jdk as builder
-ADD src /app/src
-ADD .mvn /app/.mvn
-ADD mvnw /app
-ADD pom.xml /app
 WORKDIR /app
+ADD src src
+ADD .mvn .mvn
+ADD mvnw .
+ADD pom.xml .
+RUN sed -i 's/\r//' mvnw
 RUN ./mvnw package -DskipTests
 
 FROM openjdk:8-jre-slim
