@@ -1,7 +1,7 @@
 spring:
   application:
     name: covid-service
-    third-party-api: https://covid2019-api.herokuapp.com/v2/country/
+    third-party-api: https://coronavirus-19-api.herokuapp.com/countries/
 server:
   port: 0
 eureka:
