@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  eureka-server:
+    build: eureka-server
+    ports:
+      - "8761:8761"
+  api-gateway:
+    build: api-gateway
+    ports:
+      - "80:80"
+    depends_on:
+      - eureka-server
+    environment:
+      EUREKA_URI: http://eureka-server:8761/eureka
+  country-service:
+    build: country-service
+    depends_on:
+      - eureka-server
+    environment:
+      EUREKA_URI: http://eureka-server:8761/eureka
+  covid-service:
+    build: covid-service
+    depends_on:
+      - eureka-server
+    environment:
+      EUREKA_URI: http://eureka-server:8761/eureka
+  aggregator-service:
+    build: aggregator-service
+    depends_on:
+      - eureka-server
+    environment:
+      EUREKA_URI: http://eureka-server:8761/eureka
