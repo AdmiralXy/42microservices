@@ -51,7 +51,7 @@ $> cd aggregator-service && mvn spring-boot:run
 $> cd gateway-service && mvn spring-boot:run
 ```
 
-## :whale:  Quick start (Docker)
+## :whale2:  Quick start (Docker)
 
 Make sure you have Docker and Docker Compose installed
 
